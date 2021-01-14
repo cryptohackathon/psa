@@ -8,5 +8,15 @@ Private Stream Aggregation (PSA) is a weaker primitive than DMCFE that only allo
 In this project we implemet a lattice based PSA scheme and apply it to the usecase of smart metering.
 
 ## The protocol
+This is a protocol of n clients (the households) and one server (the power-supplier).
+### Key generation and distribution
+Each client creates a diffie-hellman key-pair and a secret encryption key. The diffie-hellman public key is then exchanged with the other clients. This enables each client to compute a shared secret with all other clients. These are used to create a n out of n secret sharing of 0. Each client uses their share to encrypt (in a one time pad way) their secret encryption key and send it to the server. The server is able to decrypt the sum of the keys.
+
+### Encryption
+At every time-step (e.g. every 15 minutes) the clients encrypt their current power consumption with their secret encryption key and send the ciphertext to the aggregator
+
+### Decryption
+The aggregator can use the key obtained by the clients in the first phase to compute the sum of the client's plaintexts.
 
 ## How to run the demo
+Download the repository and run "go run smartmeter.go" in the folder "smartmeter"
