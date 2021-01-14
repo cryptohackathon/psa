@@ -18,5 +18,8 @@ At every time-step (e.g. every 15 minutes) the clients encrypt their current pow
 ### Decryption
 The aggregator can use the key obtained by the clients in the first phase to compute the sum of the client's plaintexts.
 
-## How to run the demo
+## The demo
+The demo uses the PSA scheme to simulate the smart meter use case. Additionally it executes the DMCFE scheme for the same scenario to enable a comparison between the scheems. The number of clients, the number of time-steps (labels) and the maximum power-consumption per client can be set as constants in the source code.
+
+### How to run the demo
 Download the repository and run "go run smartmeter.go" in the folder "smartmeter"
