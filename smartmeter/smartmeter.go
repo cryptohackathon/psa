@@ -12,7 +12,7 @@ import (
 )
 
 const num_clients int = 100
-const num_labels int = 2
+const num_labels int = 1
 const max_value int = 100000000
 const bound = num_clients * max_value
 
@@ -22,6 +22,9 @@ func dmcfe() {
     ciphertexts := make([]*bn256.G1, num_clients)
     key_shares := make([]data.VectorG2, num_clients)
     y := data.NewConstantVector(num_clients, big.NewInt(1))
+    
+    fmt.Println("----------------------------------------------------------------------------\n")
+    fmt.Println("Running DMCFE scheme:")
 
     fmt.Printf("Creating %v clients\n", num_clients)
     for i := 0; i < num_clients; i++ {
@@ -88,6 +91,9 @@ func main() {
     ciphertexts := make([]*big.Int, num_clients)
     key_shares := make([]data.Vector, num_clients)
     y := data.NewConstantVector(num_clients, big.NewInt(1))
+    
+    fmt.Println("----------------------------------------------------------------------------\n")
+    fmt.Println("Running PSA scheme:")
 
     fmt.Printf("Creating %v clients\n", num_clients)
     for i := 0; i < num_clients; i++ {
